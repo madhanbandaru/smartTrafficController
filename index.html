@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Monitoring System - Circuit Diagram</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .circuit-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .ascii-diagram {
+            font-family: 'Courier New', monospace;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            white-space: pre;
+            font-size: 12px;
+            line-height: 1.2;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .wiring-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .wiring-table th {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .wiring-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .wiring-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .wiring-table tr:hover {
+            background: #e3f2fd;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+        
+        .component {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 2px;
+        }
+        
+        .sensor { background: #e8f5e8; color: #2e7d32; }
+        .output { background: #fff3e0; color: #f57c00; }
+        .power { background: #ffebee; color: #c62828; }
+        .ground { background: #f3e5f5; color: #7b1fa2; }
+        
+        .note {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .breadboard-layout {
+            background: #8B4513;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        .pin-diagram {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .pin-section {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #3498db;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚦 Traffic Monitoring System Circuit Diagram</h1>
+        
+        <div class="circuit-section">
+            <h2>📋 Complete Wiring Table</h2>
+            <table class="wiring-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Component Pin</th>
+                        <th>NodeMCU Pin</th>
+                        <th>GPIO</th>
+                        <th>Wire Color</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="component sensor">DHT11 Sensor</span></td>
+                        <td>VCC</td>
+                        <td>3V3</td>
+                        <td>-</td>
+                        <td>Red</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component sensor">DHT11 Sensor</span></td>
+                        <td>GND</td>
+                        <td>GND</td>
+                        <td>-</td>
+                        <td>Black</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component sensor">DHT11 Sensor</span></td>
+                        <td>DATA</td>
+                        <td>D7</td>
+                        <td>GPIO13</td>
+                        <td>Yellow</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component output">Buzzer</span></td>
+                        <td>Positive</td>
+                        <td>D4</td>
+                        <td>GPIO2</td>
+                        <td>Orange</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component output">Buzzer</span></td>
+                        <td>Negative</td>
+                        <td>GND</td>
+                        <td>-</td>
+                        <td>Black</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component sensor">Gas Sensor</span></td>
+                        <td>VCC</td>
+                        <td>3V3</td>
+                        <td>-</td>
+                        <td>Red</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component sensor">Gas Sensor</span></td>
+                        <td>GND</td>
+                        <td>GND</td>
+                        <td>-</td>
+                        <td>Black</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component sensor">Gas Sensor</span></td>
+                        <td>DOUT</td>
+                        <td>D6</td>
+                        <td>GPIO12</td>
+                        <td>Green</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component sensor">Sound Sensor</span></td>
+                        <td>VCC</td>
+                        <td>3V3</td>
+                        <td>-</td>
+                        <td>Red</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component sensor">Sound Sensor</span></td>
+                        <td>GND</td>
+                        <td>GND</td>
+                        <td>-</td>
+                        <td>Black</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component sensor">Sound Sensor</span></td>
+                        <td>DOUT</td>
+                        <td>D5</td>
+                        <td>GPIO14</td>
+                        <td>Blue</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component output">Red LED</span></td>
+                        <td>Anode (+)</td>
+                        <td>D0</td>
+                        <td>GPIO16</td>
+                        <td>Red</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component output">Red LED</span></td>
+                        <td>Cathode (-)</td>
+                        <td>GND (via 220Ω)</td>
+                        <td>-</td>
+                        <td>Black</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component output">Yellow LED</span></td>
+                        <td>Anode (+)</td>
+                        <td>D1</td>
+                        <td>GPIO5</td>
+                        <td>Yellow</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component output">Yellow LED</span></td>
+                        <td>Cathode (-)</td>
+                        <td>GND (via 220Ω)</td>
+                        <td>-</td>
+                        <td>Black</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component output">Green LED</span></td>
+                        <td>Anode (+)</td>
+                        <td>D2</td>
+                        <td>GPIO4</td>
+                        <td>Green</td>
+                    </tr>
+                    <tr>
+                        <td><span class="component output">Green LED</span></td>
+                        <td>Cathode (-)</td>
+                        <td>GND (via 220Ω)</td>
+                        <td>-</td>
+                        <td>Black</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="circuit-section">
+            <h2>🔌 ASCII Circuit Diagram</h2>
+            <div class="ascii-diagram">
+                    NodeMCU ESP8266                     Breadboard Layout
+                    ┌─────────────────┐                 ┌────────────────────────┐
+                    │    ┌─────┐      │                 │  + + + + + + + + + + + │
+                    │    │ USB │      │                 │  - - - - - - - - - - - │
+                    │    └─────┘      │                 │                        │
+                    │                 │                 │  ┌───┐     ┌───┐       │
+                    │ 3V3 ●───────────┼─────────────────┼──┤DHT├─────┤GAS├───────┤
+                    │ GND ●───────────┼─────────────────┼──└───┘     └───┘       │
+                    │                 │                 │                        │
+                    │ D0  ●───────────┼─────────────────┼──[220Ω]──┤>├──(RED)    │
+                    │ D1  ●───────────┼─────────────────┼──[220Ω]──┤>├──(YEL)    │
+                    │ D2  ●───────────┼─────────────────┼──[220Ω]──┤>├──(GRN)    │
+                    │                 │                 │                        │
+                    │ D4  ●───────────┼─────────────────┼──♪ BUZZER              │
+                    │ D5  ●───────────┼─────────────────┼──┌─────┐               │
+                    │ D6  ●───────────┼─────────────────┼──┤SOUND├───────────────┤
+                    │ D7  ●───────────┼─────────────────┼──└─────┘               │
+                    │                 │                 │                        │
+                    └─────────────────┘                 └────────────────────────┘
+
+
+
+
+
+
+
+
+
+                                                 Power Distribution:
+            ┌────────────────────────────────────────────────────────────────┐
+            │  3V3 Rail (Red)                                                │
+            │  ├── DHT11 VCC                                                 │
+            │  ├── Gas Sensor VCC                                            │
+            │  └── Sound Sensor VCC                                          │
+            │                                                                │
+            │  GND Rail (Black)                                              │
+            │  ├── DHT11 GND                                                 │
+            │  ├── Gas Sensor GND                                            │
+            │  ├── Sound Sensor GND                                          │
+            │  ├── Buzzer GND                                                │
+            │  ├── Red LED Cathode (via 220Ω resistor)                       │
+            │  ├── Yellow LED Cathode (via 220Ω resistor)                    │
+            │  └── Green LED Cathode (via 220Ω resistor)                     │
+            └────────────────────────────────────────────────────────────────┘
+            </div>
+        </div>
+
+        <div class="circuit-section">
+            <h2>🎨 Breadboard Layout Guide</h2>
+            <div class="breadboard-layout">
+                <strong>Power Rails Setup:</strong>
+                • Connect NodeMCU 3V3 to positive power rail (red stripe)
+                • Connect NodeMCU GND to negative power rail (blue/black stripe)
+                
+                <strong>Component Placement (Left to Right):</strong>
+                Row 1-5:   DHT11 Temperature & Humidity Sensor
+                Row 10-15: MQ-2 Gas Sensor  
+                Row 20-25: Sound Detection Sensor
+                Row 30-35: Traffic Light LEDs (Red, Yellow, Green)
+                Row 40-45: Buzzer
+                Row 50-55: Current Limiting Resistors (220Ω x 3)
+            </div>
+        </div>
+
+        <div class="circuit-section">
+            <h2>⚡ Pin Configuration Summary</h2>
+            <div class="pin-diagram">
+                <div class="pin-section">
+                    <h3>Input Sensors</h3>
+                    <p><span class="highlight">D7 (GPIO13)</span> - DHT11 Data Pin</p>
+                    <p><span class="highlight">D6 (GPIO12)</span> - Gas Sensor Digital Out</p>
+                    <p><span class="highlight">D5 (GPIO14)</span> - Sound Sensor Digital Out</p>
+                </div>
+                <div class="pin-section">
+                    <h3>Output Devices</h3>
+                    <p><span class="highlight">D0 (GPIO16)</span> - Red LED</p>
+                    <p><span class="highlight">D1 (GPIO5)</span> - Yellow LED</p>
+                    <p><span class="highlight">D2 (GPIO4)</span> - Green LED</p>
+                    <p><span class="highlight">D4 (GPIO2)</span> - Buzzer</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <strong>⚠️ Important Notes:</strong><br>
+            • Use 220Ω resistors for each LED to prevent burnout<br>
+            • Ensure proper polarity for LEDs (longer leg = positive)<br>
+            • DHT11 may need a 10kΩ pull-up resistor on data line<br>
+            • Double-check all connections before powering on<br>
+            • Gas sensor needs 24-48 hours warm-up time for accurate readings
+        </div>
+
+        <div class="circuit-section">
+            <h2>🔧 Assembly Steps</h2>
+            <ol style="line-height: 1.8;">
+                <li><strong>Power Setup:</strong> Connect 3V3 and GND rails on breadboard</li>
+                <li><strong>Sensors:</strong> Place DHT11, Gas sensor, and Sound sensor</li>
+                <li><strong>LEDs:</strong> Insert LEDs with 220Ω resistors in series</li>
+                <li><strong>Buzzer:</strong> Connect buzzer with proper polarity</li>
+                <li><strong>Wiring:</strong> Use jumper wires as per the table above</li>
+                <li><strong>Testing:</strong> Upload code and test each component individually</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
