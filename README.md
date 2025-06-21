@@ -1,5 +1,5 @@
 # 🚦 IoT-Based Traffic Monitoring and Control System
-good to see window view ->https://madhanbandaru.github.io/smartTrafficController/ 
+see in desktop site ->https://madhanbandaru.github.io/smartTrafficController/ 
 
 This project is a smart IoT solution using **ESP8266** that monitors environmental conditions and detects emergency vehicles like ambulances based on sound, along with harmful gas levels. Based on this input, it automatically manages traffic lights and sends real-time data to the **Blynk IoT dashboard**.
 
